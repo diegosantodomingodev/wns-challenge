@@ -1,0 +1,305 @@
+{
+    "metadata": {
+        "version": "2.0",
+        "generated_by": "Python ETL"
+    },
+    "prices": {
+        "tomate": 1200.0,
+        "lechuga": 800.0,
+        "zanahoria": 950.0,
+        "papa": 850.0,
+        "cebolla": 900.0,
+        "morron": 1500.0,
+        "zapallo": 700.0,
+        "acelga": 650.0,
+        "espinaca": 750.0,
+        "brocoli": 1400.0,
+        "berenjena": 1100.0,
+        "calabaza": 600.0,
+        "pepino": 1000.0,
+        "remolacha": 800.0,
+        "batata": 950.0,
+        "choclo": 1300.0,
+        "merluza": 5000.0,
+        "asado_de_tira": 6800.0,
+        "salmon": 14500.0,
+        "vacio": 7200.0,
+        "corvina": 5800.0,
+        "bife_de_chorizo": 8500.0,
+        "lenguado": 8200.0,
+        "lomo": 10900.0,
+        "pejerrey": 6500.0,
+        "cuadril": 7000.0,
+        "abadejo": 7800.0,
+        "roast_beef": 6200.0,
+        "calamar": 9000.0,
+        "falda": 4800.0,
+        "mejillones": 4200.0,
+        "carne_picada": 5500.0,
+        "matambre": 6900.0,
+        "entrana": 9200.0,
+        "bondiola": 6000.0,
+        "costillas": 5500.0,
+        "lomo_cerdo": 6800.0,
+        "jamon": 5200.0,
+        "panceta": 7000.0,
+        "pollo": 2600.0,
+        "pechuga": 3800.0,
+        "muslo": 3000.0,
+        "ala": 2400.0,
+        "patamuslo": 3200.0,
+        "supremas": 4000.0
+    },
+    "recipes": [
+        {
+            "name": "Asado con ensalada criolla",
+            "ingredients": [
+                {
+                    "id": "asado_de_tira",
+                    "name": "Asado de tira",
+                    "qty_g": 1000.0
+                },
+                {
+                    "id": "tomate",
+                    "name": "Tomate",
+                    "qty_g": 250.0
+                },
+                {
+                    "id": "cebolla",
+                    "name": "Cebolla",
+                    "qty_g": 400.0
+                },
+                {
+                    "id": "morron",
+                    "name": "Morrón",
+                    "qty_g": 250.0
+                }
+            ]
+        },
+        {
+            "name": "Pollo al horno con papas y zanahorias",
+            "ingredients": [
+                {
+                    "id": "pollo",
+                    "name": "Pollo entero",
+                    "qty_g": 2000.0
+                },
+                {
+                    "id": "papa",
+                    "name": "Papa",
+                    "qty_g": 800.0
+                },
+                {
+                    "id": "zanahoria",
+                    "name": "Zanahoria",
+                    "qty_g": 400.0
+                },
+                {
+                    "id": "cebolla",
+                    "name": "Cebolla",
+                    "qty_g": 500.0
+                }
+            ]
+        },
+        {
+            "name": "Ensalada de atún (merluza) con espinaca",
+            "ingredients": [
+                {
+                    "id": "merluza",
+                    "name": "1. Merluza fresca",
+                    "qty_g": 1500.0
+                },
+                {
+                    "id": "espinaca",
+                    "name": "2. Espinaca",
+                    "qty_g": 1000.0
+                },
+                {
+                    "id": "tomate",
+                    "name": "3. Tomate",
+                    "qty_g": 500.0
+                },
+                {
+                    "id": "pepino",
+                    "name": "4. Pepino",
+                    "qty_g": 300.0
+                }
+            ]
+        },
+        {
+            "name": "Lomo salteado con brócoli y morrón",
+            "ingredients": [
+                {
+                    "id": "lomo",
+                    "name": "Lomo",
+                    "qty_g": 1250.0
+                },
+                {
+                    "id": "brocoli",
+                    "name": "Brócoli",
+                    "qty_g": 600.0
+                },
+                {
+                    "id": "morron",
+                    "name": "Morrón",
+                    "qty_g": 400.0
+                },
+                {
+                    "id": "cebolla",
+                    "name": "Cebolla",
+                    "qty_g": 1000.0
+                }
+            ]
+        },
+        {
+            "name": "Cerdo con batatas al horno",
+            "ingredients": [
+                {
+                    "id": "bondiola",
+                    "name": "- Bondiola",
+                    "qty_g": 1750.0
+                },
+                {
+                    "id": "batata",
+                    "name": "- Batata",
+                    "qty_g": 800.0
+                },
+                {
+                    "id": "cebolla",
+                    "name": "- Cebolla",
+                    "qty_g": 1000.0
+                },
+                {
+                    "id": "calabaza",
+                    "name": "- Calabaza",
+                    "qty_g": 750.0
+                }
+            ]
+        },
+        {
+            "name": "Berenjenas rellenas con carne picada",
+            "ingredients": [
+                {
+                    "id": "carne_picada",
+                    "name": "1. Carne picada especial",
+                    "qty_g": 1500.0
+                },
+                {
+                    "id": "berenjena",
+                    "name": "2. Berenjena",
+                    "qty_g": 600.0
+                },
+                {
+                    "id": "tomate",
+                    "name": "3. Tomate",
+                    "qty_g": 500.0
+                },
+                {
+                    "id": "cebolla",
+                    "name": "4. Cebolla",
+                    "qty_g": 1250.0
+                }
+            ]
+        },
+        {
+            "name": "Supremas de pollo con puré de zapallo y brócoli",
+            "ingredients": [
+                {
+                    "id": "supremas",
+                    "name": "Supremas",
+                    "qty_g": 2000.0
+                },
+                {
+                    "id": "zapallo",
+                    "name": "Zapallo",
+                    "qty_g": 1300.0
+                },
+                {
+                    "id": "brocoli",
+                    "name": "Brócoli",
+                    "qty_g": 500.0
+                },
+                {
+                    "id": "zanahoria",
+                    "name": "Zanahoria",
+                    "qty_g": 300.0
+                }
+            ]
+        },
+        {
+            "name": "Entraña con ensalada tibia de remolacha",
+            "ingredients": [
+                {
+                    "id": "entrana",
+                    "name": "- Entraña",
+                    "qty_g": 1500.0
+                },
+                {
+                    "id": "remolacha",
+                    "name": "- Remolacha",
+                    "qty_g": 500.0
+                },
+                {
+                    "id": "espinaca",
+                    "name": "- Espinaca",
+                    "qty_g": 750.0
+                },
+                {
+                    "id": "cebolla",
+                    "name": "- Cebolla",
+                    "qty_g": 600.0
+                }
+            ]
+        },
+        {
+            "name": "Pejerrey al horno con verduras de estación",
+            "ingredients": [
+                {
+                    "id": "pejerrey",
+                    "name": "- Pejerrey",
+                    "qty_g": 2000.0
+                },
+                {
+                    "id": "calabaza",
+                    "name": "- Calabaza",
+                    "qty_g": 1000.0
+                },
+                {
+                    "id": "zanahoria",
+                    "name": "- Zanahoria",
+                    "qty_g": 400.0
+                },
+                {
+                    "id": "cebolla",
+                    "name": "- Cebolla",
+                    "qty_g": 500.0
+                }
+            ]
+        },
+        {
+            "name": "Salteado de carne con choclo y acelga",
+            "ingredients": [
+                {
+                    "id": "cuadril",
+                    "name": "- Cuadril",
+                    "qty_g": 2000.0
+                },
+                {
+                    "id": "choclo",
+                    "name": "- Choclo",
+                    "qty_g": 800.0
+                },
+                {
+                    "id": "acelga",
+                    "name": "- Acelga",
+                    "qty_g": 600.0
+                },
+                {
+                    "id": "cebolla",
+                    "name": "- Cebolla",
+                    "qty_g": 1000.0
+                }
+            ]
+        }
+    ]
+}
