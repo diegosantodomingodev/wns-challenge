@@ -10,7 +10,7 @@
 <body class="bg-gray-100 p-10">
     <div class="max-w-5xl mx-auto">
         
-        <!-- Header con Controles -->
+        <!-- Header -->
         <header class="flex flex-col md:flex-row justify-between items-center mb-8 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
             <div>
                 <h1 class="text-3xl font-bold text-gray-800">Costeador de Recetas</h1>
@@ -40,7 +40,7 @@
     </div>
 
     <script>
-        // Configurar fecha máxima (hoy) y mínima (30 días atrás)
+        // Configurar fecha
         const dateInput = document.getElementById('datePicker');
         const today = new Date();
         const minDate = new Date();
@@ -50,10 +50,10 @@
         dateInput.min = minDate.toISOString().split('T')[0];
         dateInput.value = dateInput.max; // Default hoy
 
-        // Event listener para cambio de fecha
+        
         dateInput.addEventListener('change', () => loadData(dateInput.value));
 
-        // Carga inicial
+    
         loadData(dateInput.value);
 
         async function loadData(date) {
@@ -69,7 +69,7 @@
             loading.classList.remove('hidden');
 
             try {
-                // Llamada a la API con el parámetro de fecha
+                // Llamada a la API 
                 const res = await fetch(`/api/calculate?date=${date}`);
                 const data = await res.json();
 
@@ -82,7 +82,7 @@
                     rateValue.innerText = `$${data.usd_rate.toLocaleString('es-AR', {minimumFractionDigits: 2})}`;
                     rateDisplay.classList.remove('hidden');
                 } else {
-                    rateDisplay.classList.add('hidden'); // O mostrar aviso de que no hay tasa
+                    rateDisplay.classList.add('hidden'); 
                 }
 
                 if (!data.recipes || data.recipes.length === 0) {

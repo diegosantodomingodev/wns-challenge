@@ -7,9 +7,8 @@ from flask import Flask, jsonify, send_file, request
 app = Flask(__name__)
 DATA_FILE = 'data_warehouse.json'
 
-# --- CONFIGURACIÓN ---
-# API pública para obtener cotización USD vs otras monedas por fecha
-# Formato: https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@{date}/v1/currencies/usd.json
+# API pública para obtener cotización USD
+
 CURRENCY_API_URL = "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@{date}/v1/currencies/usd.json"
 
 def load_data():
@@ -19,10 +18,7 @@ def load_data():
     return {"prices": {}, "recipes": []}
 
 def get_usd_rate(date_str):
-    """
-    Obtiene la cotización del USD para una fecha dada (YYYY-MM-DD).
-    Retorna cuántos ARS vale 1 USD.
-    """
+   
     try:
         url = CURRENCY_API_URL.format(date=date_str)
         print(f"Consultando cotización: {url}")
@@ -30,8 +26,6 @@ def get_usd_rate(date_str):
         
         if response.status_code == 200:
             data = response.json()
-            # La API devuelve: { "date": "...", "usd": { "ars": 950.5, ... } }
-            # Necesitamos el valor de ARS (cuántos pesos es 1 dólar)
             ars_rate = data.get('usd', {}).get('ars')
             return ars_rate
         else:
@@ -47,10 +41,10 @@ def index():
 
 @app.route('/api/calculate')
 def calculate():
-    # Obtener fecha de los parámetros (query param), default hoy
+
     target_date = request.args.get('date', datetime.now().strftime('%Y-%m-%d'))
     
-    # Validar fecha (simple)
+
     try:
         datetime.strptime(target_date, '%Y-%m-%d')
     except ValueError:
@@ -76,7 +70,7 @@ def calculate():
             cost_ars = 0
             
             if price_ars_kg:
-                # Costo ARS = (gramos / 1000) * precio_kilo
+             
                 cost_ars = (ing['qty_g'] / 1000) * price_ars_kg
                 total_ars += cost_ars
             else:
@@ -89,7 +83,7 @@ def calculate():
                 "found": bool(price_ars_kg)
             })
             
-        # Calcular costo en USD si tenemos la tasa
+        # Calcular costo en USD
         total_usd = total_ars / usd_rate if usd_rate else None
             
         results.append({
@@ -106,7 +100,6 @@ def calculate():
         "recipes": results
     })
 
-# CÓDIGO CORREGIDO (Funciona en Docker y en tu PC)
 if __name__ == '__main__':
     print("Servidor corriendo...")
     app.run(host='0.0.0.0', port=5000, debug=True)

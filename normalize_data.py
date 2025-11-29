@@ -10,7 +10,6 @@ from dataclasses import dataclass, field
 import pandas as pd
 import pdfplumber
 
-# --- CONFIGURACIÓN DE LOGGING ---
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s [%(levelname)s] %(message)s',
@@ -22,13 +21,12 @@ logger = logging.getLogger("ETL_Pipeline")
 INPUT_DIR = 'inputs'
 OUTPUT_FILE = 'data_warehouse.json'
 
-# --- 1. DOMINIO & MODELOS DE DATOS ---
 
 @dataclass
 class IngredientItem:
     """Representa un ingrediente dentro de una receta."""
-    id: str  # Clave normalizada
-    name: str # Nombre original para display
+    id: str  
+    name: str 
     qty_g: float
 
 @dataclass
@@ -46,13 +44,10 @@ class Recipe:
             ]
         }
 
-# --- 2. SERVICIO DE NORMALIZACIÓN (Reglas de Negocio) ---
+# --- nORMALIZACIÓN ---
 
 class NormalizationService:
-    """
-    Servicio estático encargado de la limpieza y mapeo de nombres.
-    Centraliza la lógica de 'fuzzy matching' determinista (hardcoded map).
-    """
+    
     
     # Source of Truth
     _MASTER_MAP = {
@@ -98,7 +93,6 @@ class NormalizationService:
                 return val
         return None
 
-# --- 3. EXTRACTORES (Estrategias de Ingesta) ---
 
 class BaseExtractor(ABC):
     """Clase base abstracta para implementar el patrón Strategy."""
@@ -116,7 +110,6 @@ class BaseExtractor(ABC):
         return exists
 
 class PriceExtractor(BaseExtractor):
-    """Interfaz base para extractores que devuelven diccionarios de precios."""
     @abstractmethod
     def extract(self) -> Dict[str, float]:
         pass
@@ -134,11 +127,11 @@ class PDFPriceExtractor(PriceExtractor):
                 full_text = "".join([p.extract_text() or "" for p in pdf.pages])
                 
                 for line in full_text.split('\n'):
-                    # Heurística: Línea contiene '$' y texto
+                  
                     if '$' in line:
                         parts = line.split('$')
                         name_part = parts[0].strip()
-                        # Limpiar precio: tomar solo la primera "palabra" numérica tras el $
+                        
                         price_part_match = re.search(r'([\d\.,]+)', parts[1])
                         
                         if price_part_match:
@@ -147,7 +140,7 @@ class PDFPriceExtractor(PriceExtractor):
                             
                             if norm_key:
                                 try:
-                                    # Conversión robusta: eliminar puntos de mil, coma a punto
+                                    #  eliminar puntos de mil, coma a punto
                                     final_price = float(price_str.replace('.', '').replace(',', '.'))
                                     prices[norm_key] = final_price
                                 except ValueError:
@@ -158,7 +151,7 @@ class PDFPriceExtractor(PriceExtractor):
         return prices
 
 class ExcelPriceExtractor(PriceExtractor):
-    """Extrae precios de Excel/CSV mediante barrido matricial."""
+    """Extrae precios de Excel/CSV mediante barrido ."""
     
     def extract(self) -> Dict[str, float]:
         prices = {}
@@ -263,7 +256,7 @@ class RecipeExtractor(BaseExtractor):
         except ValueError:
             return None
 
-# --- 4. ORQUESTADOR (Pipeline) ---
+# --- (Pipeline) ---
 
 class DataPipeline:
     def __init__(self):
@@ -306,7 +299,7 @@ class DataPipeline:
         except IOError as e:
             logger.error(f"Error guardando archivo final: {e}")
 
-# --- PUNTO DE ENTRADA ---
+# --- inpoint ---
 if __name__ == "__main__":
     pipeline = DataPipeline()
     pipeline.run()
